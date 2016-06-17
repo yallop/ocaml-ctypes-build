@@ -1,0 +1,11 @@
+version = "0.1.0"
+description = "Common build utilities for ctypes bindings"
+
+package "ocamlbuild" (
+  requires                = "ocamlbuild"
+  archive(byte)           = "ocamlbuild.cma"
+  archive(byte, plugin)   = "ocamlbuild.cma"
+  archive(native)         = "ocamlbuild.cmxa"
+  archive(native, plugin) = "ocamlbuild.cmxs"
+  exists_if               = "ocamlbuild.cma"
+)
