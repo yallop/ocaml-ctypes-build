@@ -6,14 +6,15 @@ OCAMLBUILD=ocamlbuild -use-ocamlfind -classic-display
 
 TARGETS=.cma .cmxa .cmxs .a
 
-PRODUCTS=$(addprefix ocamlbuild,$(TARGETS))
+PRODUCTS=$(addprefix ocamlbuild,$(TARGETS)) \
+         $(addprefix ctypes,$(TARGETS))
 
 TYPES=.mli .cmi .cmti
 
 INSTALL:=$(addprefix _build/ocamlbuild/ctypes_rules,$(TYPES)) \
-         $(addprefix _build/ctypes/stub_generator,$(TYPES)) \
+         $(addprefix _build/stub-generator/ctypes_stub_generator,$(TYPES)) \
          $(addprefix _build/ocamlbuild/ocamlbuild,$(TARGETS)) \
-         $(addprefix _build/ctypes/ctypes,$(TARGETS))
+         $(addprefix _build/stub-generator/ctypes,$(TARGETS))
 
 build:
 	$(OCAMLBUILD) $(PRODUCTS)

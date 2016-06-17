@@ -9,3 +9,12 @@ package "ocamlbuild" (
   archive(native, plugin) = "ocamlbuild.cmxs"
   exists_if               = "ocamlbuild.cma"
 )
+
+package "stub-generator" (
+  requires                = "ctypes.stubs"
+  archive(byte)           = "ctypes.cma"
+  archive(byte, plugin)   = "ctypes.cma"
+  archive(native)         = "ctypes.cmxa"
+  archive(native, plugin) = "ctypes.cmxs"
+  exists_if               = "ctypes.cma"
+)
