@@ -82,11 +82,6 @@ let rules ~prefix ?(bindings_dir="unix") ?(os="unix")
     copy_rule "cstubs: lib_gen/x_bindings.ml -> x_bindings.ml"
       "lib_gen/%_bindings.ml" (bindings_dir ^"/%_bindings.ml");
 
-    flag ["c"; "compile"] & S[A"-ccopt"; A"-I/usr/local/include"];
-    flag ["c"; "ocamlmklib"] & A"-L/usr/local/lib";
-    flag ["ocaml"; "link"; "native"; "program"] &
-      S[A"-cclib"; A"-L/usr/local/lib"];
-
     (* Linking cstubs *)
     dep ["c"; "compile"; "use_"^ prefix ^"_util"]
       [bindings_dir ^"/"^ os ^"_"^ prefix ^"_util.o";
