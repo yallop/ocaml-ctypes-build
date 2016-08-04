@@ -97,13 +97,9 @@ let rules ~prefix ?(bindings_dir="unix") ?(os="unix")
     flag ["c"; "compile"; "debug"] & A"-g";
 
     (* Linking generated stubs *)
-    dep ["ocaml"; "link"; "byte"; "library"; "use_"^ prefix ^"_stubs"]
-      [bindings_dir ^"/dll"^ os ^"_"^ prefix ^"_stubs"-.-(!Options.ext_dll)];
     flag ["ocaml"; "link"; "byte"; "library"; "use_"^ prefix ^"_stubs"] &
       S[A"-dllib"; A("-l"^ os ^"_"^ prefix ^"_stubs")];
 
-    dep ["ocaml"; "link"; "native"; "library"; "use_"^ prefix ^"_stubs"]
-      [bindings_dir ^"/lib"^ os ^"_"^ prefix ^"_stubs"-.-(!Options.ext_lib)];
     flag ["ocaml"; "link"; "native"; "library"; "use_"^ prefix ^"_stubs"] &
       S[A"-cclib"; A("-l"^ os ^"_"^ prefix ^"_stubs")];
 
