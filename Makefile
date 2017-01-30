@@ -9,7 +9,7 @@ TARGETS=.cma .cmxa .cmxs .a
 PRODUCTS=$(addprefix ocamlbuild,$(TARGETS)) \
          $(addprefix ctypes,$(TARGETS))
 
-TYPES=.mli .cmi .cmti
+TYPES=.mli .cmi .cmti .cmx
 
 INSTALL:=$(addprefix _build/ocamlbuild/ctypes_rules,$(TYPES)) \
          $(addprefix _build/stub-generator/ctypes_stub_generator,$(TYPES)) \
